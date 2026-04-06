@@ -192,5 +192,36 @@ dados_vendas_limpos |>
    group_by(cidade , produto) |> 
    summarise(receita_media = mean (receita))
  
+
+ # A função arrange  -----------------------------------------------------
+ 
+ # Ordena os dados por receita em ordem crescente
+ dados_vendas_limpos |> 
+   arrange (receita)
+ 
+ # Ordena os dados por receita em ordem decresecente
+ dados_vendas_limpos |> 
+   arrange (desc(receita))
+ 
+ # Ordena os dados por receita média por cidade em ordem crescente
+ dados_vendas_limpos |>
+   group_by(cidade) |> 
+   summarise(receita_media = mean (receita)) |> 
+   arrange (receita_media)
+ 
+ # Ordena os dados por receita média por cidade em ordem decrescente
+ # salva o resultado em um novo objeto 
+   receita_media_cidade <- 
+   dados_vendas_limpos |> 
+   group_by(cidade) |> 
+   summarise(receita_media = mean (receita)) |> 
+   arrange(desc(receita_media))
+   
+ # Exibe o resultado 
+   receita_media_cidade
+   
+ 
+
+ 
  
          
